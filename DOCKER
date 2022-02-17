@@ -1,0 +1,7 @@
+FROM nbgallery/jupyter-alpine:pi
+
+RUN pip install git+https://github.com/kubernetes-client/python.git &&\
+    pip3 install paramiko &&\
+    pip3 install tornado
+ENTRYPOINT ["/sbin/tini","--"]
+CMD ["jupiter", "notebook", "--ip=0.0.0.0"]
